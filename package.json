@@ -1,0 +1,23 @@
+{
+  "name": "cypress_academy_sum25",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tredgate/cypress_academy_sum25.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tredgate/cypress_academy_sum25/issues"
+  },
+  "homepage": "https://github.com/tredgate/cypress_academy_sum25#readme",
+  "dependencies": {
+    "cypress": "^14.5.3"
+  }
+}
