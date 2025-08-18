@@ -6,6 +6,8 @@ export class DashboardPage {
     this.profileButton = "#user_dropdown";
     this.logoutButton = "#logout";
     this.projectLink = "#Projects";
+    this.welcomePageHeader = "#welcome-page-header";
+    cy.get(this.welcomePageHeader).should("be.visible");
   }
 
   clickProfile() {
