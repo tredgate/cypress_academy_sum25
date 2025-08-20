@@ -6,6 +6,7 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     env: {
+      // ? Alternativa k cypress.env.json
       testVar: "Toto je proměnná",
     },
     watchForFileChanges: false,
