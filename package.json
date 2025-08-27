@@ -19,6 +19,7 @@
   "homepage": "https://github.com/tredgate/cypress_academy_sum25#readme",
   "dependencies": {
     "cypress": "^14.5.3",
+    "cypress-real-events": "^1.14.0",
     "moment": "^2.30.1"
   },
   "devDependencies": {
