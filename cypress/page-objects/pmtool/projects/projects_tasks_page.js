@@ -1,6 +1,3 @@
-// projects_tasks_page.js
-// cypress/page-objects/pmtool/projects
-
 import { HeaderSection } from "../common/header_section.js";
 
 export class ProjectsTasksPage extends HeaderSection {
