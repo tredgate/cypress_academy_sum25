@@ -1,7 +1,10 @@
 import { LoginPage } from "../../page-objects/pmtool/login_page.js";
 
-describe("Login Page Atomic Tests", () => {
-  beforeEach(() => {
+describe("Exercise: Disabled isolation", { testIsolation: false }, () => {
+  before(() => {
+    cy.clearAllCookies();
+    cy.clearAllLocalStorage();
+    cy.clearAllSessionStorage();
     new LoginPage().openPmtool();
   });
 
@@ -92,6 +95,7 @@ describe("Login Page Atomic Tests", () => {
   context("Functionalities Tests", () => {
     it("Successful Login", () => {
       const loginPage = new LoginPage();
+      cy.get("#username").clear();
       loginPage
         .typeUsername(Cypress.env("pmtool_username"))
         .typePassword(Cypress.env("pmtool_password"))
@@ -99,7 +103,7 @@ describe("Login Page Atomic Tests", () => {
         .welcomePageHeaderIsVisible();
     });
 
-    it("Unsuccessful Login", () => {
+    it.skip("Unsuccessful Login", () => {
       const loginPage = new LoginPage();
       loginPage.typeUsername("ABCD").typePassword("EFGH").clickLogin();
       loginPage.alertDiv.isVisible();

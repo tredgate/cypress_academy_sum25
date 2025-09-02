@@ -1,10 +1,15 @@
 import { LoginPage } from "../../../page-objects/pmtool/login_page.js";
 import { UsersPage } from "../../../page-objects/pmtool/users_page.js";
 
-describe("Users Page Atomic Tests", () => {
+describe("Disabled Test Isolation", { testIsolation: false }, () => {
   const usersPage = new UsersPage();
 
-  beforeEach(() => {
+  // ? Namísto beforeEach používáme before (chceme se přihlásit jen před prvním testem)
+  before(() => {
+    // ? Před začátkem testů musíme vyčistit Cypress data a cache, jinak se nám díky vypnuté izolaci mohou do testu dostat data nebo stránky z předchozích testů.
+    cy.clearAllCookies();
+    cy.clearAllLocalStorage();
+    cy.clearAllSessionStorage();
     new LoginPage().openPmtool().login("cypress_zima_2024", "Zima2024Cypress");
     new UsersPage().visit();
   });
