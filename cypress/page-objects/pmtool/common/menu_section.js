@@ -1,7 +1,11 @@
-export class MenuSection {
-  constructor() {
+import { BasePage } from "./base_page.js";
+
+export class MenuSection extends BasePage {
+  constructor(path) {
+    super(path);
     this.projectLink = "#Projects";
     this.dashboardLink = "#dashboard";
+    this.usersLink = "#Users a.menu-itemsitems1";
   }
 
   clickProjectLink() {
@@ -15,5 +19,11 @@ export class MenuSection {
     const { DashboardPage } = require("../dashboard_page.js");
     cy.get(this.dashboardLink).click();
     return new DashboardPage();
+  }
+
+  clickUsers() {
+    const { UsersPage } = require("../users_page.js");
+    cy.get(this.usersLink).click();
+    return new UsersPage();
   }
 }

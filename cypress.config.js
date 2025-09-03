@@ -8,6 +8,7 @@ module.exports = defineConfig({
     env: {
       // ? Alternativa k cypress.env.json
       testVar: "Toto je proměnná",
+      pmtool_url: "https://tredgate.com/pmtool",
     },
     watchForFileChanges: false,
     defaultCommandTimeout: 10000,

@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cypress:prod": "cypress open --config-file env/prod.env.config.js",
+    "cypress": "cypress open",
+    "test": "cypress open"
   },
   "repository": {
     "type": "git",
