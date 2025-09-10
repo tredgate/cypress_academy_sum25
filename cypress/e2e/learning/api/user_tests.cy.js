@@ -1,5 +1,3 @@
-// user_tests.cy.js
-// cypress/e2e/learning/api
 import { faker } from "@faker-js/faker";
 import { UserApi } from "../../../api/tegb/user_api.js";
 
