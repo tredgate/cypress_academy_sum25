@@ -1,5 +1,6 @@
 import { HeaderSection } from "./common/header_section.js";
 import { CreateNewProjectModal } from "./create_new_project_modal";
+import { createSimpleProject } from "./flows/projects_flows.js";
 
 export class ProjectsPage extends HeaderSection {
   constructor() {
@@ -10,5 +11,9 @@ export class ProjectsPage extends HeaderSection {
   clickAddProject() {
     cy.get(this.addProjectButton).click();
     return new CreateNewProjectModal();
+  }
+
+  createSimpleProjectFlow(projectName) {
+    return createSimpleProject(projectName);
   }
 }
