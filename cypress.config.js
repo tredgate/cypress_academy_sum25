@@ -15,6 +15,8 @@ module.exports = defineConfig({
       eshop_url: "https://tredgate.com/eshop",
       webtrain_url: "https://tredgate.com/webtrain",
       automation_test_store_url: "https://automationteststore.com/",
+      tegb_cert_url: "https://tegb-frontend-88542200c6db.herokuapp.com/",
+      TEST_LANGUAGE: process.env.TEST_LANGUAGE || "en",
     },
     watchForFileChanges: false,
     defaultCommandTimeout: 10000,

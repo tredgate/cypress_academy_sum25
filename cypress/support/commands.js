@@ -23,3 +23,31 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+const { currentLanguage } = require("./i18n/i18n.js");
+
+Cypress.Commands.add("waitWith", (milliseconds, reason) => {
+  cy.wait(milliseconds);
+  cy.log(`Waited for ${milliseconds} ms. Reason: ${reason}`);
+});
+
+Cypress.Commands.add(
+  "typeSlowly",
+  { prevSubject: "element" },
+  (selector, text, delay = 100) => {
+    const { customElement } = require("../helpers/custom_element.js");
+    customElement(selector).get().type(text, { delay, log: false });
+    cy.log(
+      `Typed text "${text}" into element ${selector} with delay ${delay} ms`
+    );
+  }
+);
+
+Cypress.Commands.add("openTegbAndSetLanguage", () => {
+  const { LoginPage } = require("../page-objects/tegb-cert/login_page.js");
+  const { currentLanguage } = require("./i18n/i18n.js");
+  const loginPage = new LoginPage();
+  loginPage.open();
+  loginPage.switchLanguage(currentLanguage);
+  cy.log(`Switched TEGB to '${currentLanguage}' language`);
+});

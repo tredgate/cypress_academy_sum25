@@ -51,4 +51,31 @@ export class LoginPage {
     this.pageHeader.haveText(headerText);
     return this;
   }
+
+  /**
+   * Tato metoda slouží pro ukázku použití objektových literálů v Page Objectu, reálně by zde neměla být, s LoginPage nesouvisí a neinteraguje s ní
+   * @param {Object} userData - objektový literál s uživatelskými daty
+   * @param {string} userData.username - uživatelské jméno
+   * @param {string} userData.password - heslo
+   * @param {string} userData.email - emailová adresa
+   * @param {string} userData.firstName - křestní jméno
+   * @param {number} userData.age - věk
+   *
+   * @example
+   * const userData = {
+   *   username: "petrfifka",
+   *  password: "CypressRocks123!",
+   *  email: "petrfifka@example.com",
+   *  firstName: "Petr",
+   *  age: 30,
+   * };
+   */
+  logUserData(userData) {
+    cy.log("User Data:");
+    cy.log("Username: " + userData.username);
+    cy.log("Password: " + userData.password);
+    cy.log("Email: " + userData.email);
+    cy.log("First Name: " + userData.firstName);
+    cy.log("Age: " + userData.age);
+  }
 }

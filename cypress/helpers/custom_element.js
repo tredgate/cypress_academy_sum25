@@ -1,48 +1,68 @@
 export const customElement = (selector) => {
   const element = {
     isVisible() {
-      cy.get(selector).should("be.visible");
+      getCypressElement(selector).should("be.visible");
       return this;
     },
     isNotVisible() {
-      cy.get(selector).should("not.be.visible");
+      getCypressElement(selector).should("not.be.visible");
       return this;
     },
-    haveText(text) {
-      cy.get(selector).should("have.text", text);
+    haveText(text, ignoreWhitespace = true) {
+      text = String(text);
+      const assertedText = ignoreWhitespace ? text.trim() : text; // ? Pokud nebude fungovat trim, tak použít text.replace(/\s+/g, ' ')
+      getCypressElement(selector).should("have.text", assertedText);
       return this;
     },
     containsText(text) {
-      cy.get(selector).should("contain.text", text);
+      getCypressElement(selector).should("contain.text", text);
       return this;
     },
     haveValue(value) {
-      cy.get(selector).should("have.value", value);
+      getCypressElement(selector).should("have.value", value);
       return this;
     },
     havePlaceholder(placeholder) {
-      cy.get(selector).should("have.attr", "placeholder", placeholder);
+      getCypressElement(selector).should(
+        "have.attr",
+        "placeholder",
+        placeholder
+      );
       return this;
     },
     haveAttribute(attribute, value) {
-      cy.get(selector).should("have.attr", attribute, value);
+      getCypressElement(selector).should("have.attr", attribute, value);
       return this;
     },
     click() {
-      cy.get(selector).click();
+      getCypressElement(selector).click();
       return this;
     },
     type(value) {
-      cy.get(selector).type(value);
+      getCypressElement(selector).type(value);
       return this;
     },
     clear() {
-      cy.get(selector).clear();
+      getCypressElement(selector).clear();
       return this;
     },
     get() {
-      return cy.get(selector);
+      return getCypressElement(selector);
     },
   };
   return element;
 };
+
+function isXpath(selector) {
+  const selectorString = String(selector);
+  return selectorString.startsWith("/") || selectorString.startsWith("(/");
+}
+
+function getCypressElement(selector) {
+  if (isXpath(selector)) {
+    /** @type {Cypress.Chainable} */
+    const xpathElement = cy.xpath(selector);
+    return xpathElement;
+  }
+  return cy.get(selector);
+}
