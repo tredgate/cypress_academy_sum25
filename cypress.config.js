@@ -1,9 +1,19 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
+  reporter: "cypress-mochawesome-reporter",
+  reporterOptions: {
+    charts: true,
+    embeddedScreenshots: true,
+    showSkipped: true,
+    saveAllAttempts: false,
+    inlineAssets: true,
+    json: true,
+  },
+  screenshotsFolder: "images",
   e2e: {
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      require("cypress-mochawesome-reporter/plugin")(on);
     },
     experimentalOriginDependencies: true,
     env: {
@@ -20,5 +30,6 @@ module.exports = defineConfig({
     },
     watchForFileChanges: false,
     defaultCommandTimeout: 10000,
+    screenshotOnRunFailure: true,
   },
 });

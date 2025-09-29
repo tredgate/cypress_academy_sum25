@@ -1,16 +1,15 @@
 import { LoginPage } from "../../../page-objects/pmtool/login_page";
-import { dictionary } from "../../dict.js";
 
 describe("Chai Tests (Tests assertions)", () => {
   beforeEach(() => {
     new LoginPage().openPmtool();
   });
 
-  it.only("Has Text Assert", () => {
+  it("Has Text Assert", () => {
     cy.get(".form-title").should("have.text", "Login");
   });
 
-  it.skip("Failing: Login header has text 'Login2", () => {
+  it("Failing: Login header has text 'Login2", () => {
     cy.get(".form-title").should("have.text", "Login2");
   });
 
@@ -68,7 +67,7 @@ describe("Chai Tests (Tests assertions)", () => {
     cy.get("#password").should("have.attr", "placeholder", "Password");
   });
 
-  it.only("Alert not exist after Pmtool opened", () => {
+  it("Alert not exist after Pmtool opened", () => {
     cy.get("#username").should("be.visible");
     cy.get(".alert-danger").should("not.exist");
   });
